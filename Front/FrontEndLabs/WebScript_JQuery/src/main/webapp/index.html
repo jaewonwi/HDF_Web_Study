@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanban Board</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="board-header">
+      <div class="header-title">
+        <h1>Kanban Board</h1>
+      </div>
+
+      <form id="todo-form" class="todo-form">
+        <label class="field">
+          <span>Type</span>
+          <select id="todo-type" name="type">
+            <option value="Backlog">Backlog</option>
+            <option value="Todo">Todo</option>
+            <option value="InProgress">InProgress</option>
+            <option value="Testing">Testing</option>
+            <option value="Done">Done</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Title</span>
+          <input id="todo-title" name="title" type="text" placeholder="할 일 제목">
+        </label>
+
+        <label class="field field-wide">
+          <span>Description</span>
+          <input id="todo-description" name="description" type="text" placeholder="상세 설명">
+        </label>
+
+        <button id="add-btn" class="add-btn" type="submit">ADD</button>
+      </form>
+    </header>
+
+    <main class="kanban-board">
+      <section class="kanban-column" data-type="Backlog">
+        <div class="column-header">
+          <h2>Backlog</h2>
+          <span class="item-count">0</span>
+        </div>
+        <div id="Backlog" class="todo-list"></div>
+      </section>
+
+      <section class="kanban-column" data-type="Todo">
+        <div class="column-header">
+          <h2>Todo</h2>
+          <span class="item-count">0</span>
+        </div>
+        <div id="Todo" class="todo-list"></div>
+      </section>
+
+      <section class="kanban-column" data-type="InProgress">
+        <div class="column-header">
+          <h2>InProgress</h2>
+          <span class="item-count">0</span>
+        </div>
+        <div id="InProgress" class="todo-list"></div>
+      </section>
+
+      <section class="kanban-column" data-type="Testing">
+        <div class="column-header">
+          <h2>Testing</h2>
+          <span class="item-count">0</span>
+        </div>
+        <div id="Testing" class="todo-list"></div>
+      </section>
+
+      <section class="kanban-column" data-type="Done">
+        <div class="column-header">
+          <h2>Done</h2>
+          <span class="item-count">0</span>
+        </div>
+        <div id="Done" class="todo-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

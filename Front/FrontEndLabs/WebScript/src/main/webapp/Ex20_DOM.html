@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .democlass {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="div">
+        <h1 class="democlass">Hello World_1</h1>
+        <h1 class="democlass">Hello World_2</h1>
+        <h1 class="democlass">Hello World_3</h1>
+    </div>
+</body>
+<script>
+    // document.getElementsByTagName("h1")[0].removeAttribute("class");
+/*
+    let hArr = document.getElementsByTagName("h1");
+    console.log(hArr);  // 배열
+
+    
+    for (let i = 0; i < hArr.length; i++){
+        console.log(hArr.length);
+        hArr[i].removeAttribute('class');
+    }
+*/ 
+    /*
+    [ 문제가 있는 코드 ]
+    let array = document.getElementsByTagName("h1");
+    for (let index in array){
+        console.log(array[index]);
+        document.getElementById("div").removeChild(array[index]);
+    }
+    -> Hello World_2 만 남아있고, Ex20_DOM.html:73 Uncaught TypeError가 발생하는 이유?
+    
+    [ 이유 ]
+    삭제: 0 -> 1 -> 2
+    
+    [0]              [1]              [2]
+    Hello World_1    Hello World_2    Hello World_3
+    
+    === 삭제[0] ===
+    [0]              [1]              [2]
+    Hello World_2    Hello World_3
+    
+    === 삭제[1] ===
+    [0]              [1]              [2]
+    Hello World_2  
+    
+    === 삭제[2] ===
+    [0]              [1]              [2]
+    Hello World_2  
+    -> 삭제 실패
+    */
+
+    
+    // [해결방안 1] remove 이용하기 -> remove는 자기 자신을 삭제 
+    // let array = document.getElementsByTagName("h1");
+    // let len = array.length;
+    // for (let i = 0; i < len; i++){
+    //     array[len - 1 - i].remove();
+    // }
+
+    // [해결방안 2] removeChild()
+    const parent = document.getElementById("div");
+    const list = parent.getElementsByTagName("h1"); 
+    console.log(list);
+    for (let i = list.length - 1; i >= 0; i--){
+        console.log("i : " + i);
+        parent.removeChild(list[i]);
+    }
+</script>
+</html>

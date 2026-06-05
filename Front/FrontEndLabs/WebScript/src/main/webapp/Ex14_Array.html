@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+        java ... 배열(정적) & Collection(동적, 클래스 제공)
+        
+        javascript의 배열 ... 정적? Collection(동적)?
+        javascript는 only 동적배열(자료구조 : stack)
+
+        let arr = [];
+        arr.push();
+        arr.pop();
+
+        // LIFO
+
+        */
+
+        let arr = [10, 20, 30];
+        for (let i = 0; i < arr.length; i++){
+            document.write(arr[i] + "<br>");
+        }
+
+        // Best (좋은 냄새가 나는 코드)
+        // let arr = [];
+
+        // Bad (나쁜 냄새가 나는 코드)
+        // let arr = new Array(3);
+        // let arr2 = new Array(1,2,3);
+
+        let arr2 = [];
+        arr2.push(10);
+        arr2.push(20);
+        arr2.push(30);
+
+        document.write(arr2.pop());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

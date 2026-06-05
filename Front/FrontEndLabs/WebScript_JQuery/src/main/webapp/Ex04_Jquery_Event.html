@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        /*
+        $(document).ready(function(){
+        });
+        */
+        $(function(){   // $(document).ready 생략가능
+            $('#btncopy').click(function(){
+                $('#txtcopyuserid').val($('#txtuserid'),val());
+            });
+
+            $('#select_hobby').change(function(){
+                // select가 body에 하나밖에 없을 경우에는 이게 가능하다. 어차피 selected 될 게 하나밖에 없어서
+                const text = $(':selected').text();    // :가상선택자
+                console.log(text);  
+
+                // 하지만 만약 select가 여러개라면? id로 접근해서 가상선택자 사용하기...
+                const text2 = $('#select_hobby option:selected').text();
+                console.log(text2);
+
+                const value = $('#select_hobby').val(); // value 옵션의 값을 반환 (만약 value가 없음 text를 대신 반환한다.)
+                console.log(value);
+            })
+
+            $('#txtpwd2').keyup(function(){
+                if ($('#txtpwd').val() != $('#txtpwd2').val()){
+                    $('#message').html('<h3>암호가 일치하지 않습니다.</h3>');   // .html()은 태그까지 인지
+                } else {
+                    $('#message').css('color','green');
+                    $('#message').html('<h3>암호가 일치합니다.</h3>');
+
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <p>Jquery hover(mouseover , mouseleave)</p>
+	
+	ID:<input type="text" id="txtuserid">
+	<hr>
+	<input type="button" id="btncopy" value="copy">
+	<hr>
+	Copy ID:<input type="text" id="txtcopyuserid">
+	
+	<hr>
+	<select id="select_hobby">
+		<option value="JAVA">java</option>
+		<option value="SCRIPT">script</option>
+		<option>jdbc</option>
+	</select>
+	<br>
+	<input type="text" id="txtselect">
+	<hr>
+	<table style="border: 1px solid red;">
+		<tr>
+			<td>암호</td>
+			<td>
+				<input type="text" id="txtpwd" size="20" maxlength="5">
+			</td>
+		</tr>
+		<tr>
+			<td>암호확인</td>
+			<td>
+				<input type="text" id="txtpwd2" size="20" maxlength="5">
+			</td>
+		</tr>
+	</table>
+	<div id="message" style="color: red"></div>
+</body>
+</html>

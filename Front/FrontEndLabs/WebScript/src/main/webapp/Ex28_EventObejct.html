@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*  
+        https://naver.me/x522HwUY
+
+        javascript에서 사건(event)가 발생(ex. click, mouseovber, mouseout)하면 내부적으로 event에 대한 정보를 담고 있는 객체를 자동생성한다.
+
+        event 객체 : 사건의 진실(발생, 주체, 영향, 정보)을 이 객체를 통해서
+
+        + java의 예외처리와 비교 ...
+        try{
+            예외가 발생 > 예외에 맞는 객체가 자동 생성 > new 예외객체 생성
+        } catch (Exception e){
+            > 이걸 상위타입인 Exception으로 받는다.
+        }
+
+
+        */ 
+
+        window.onload = function(){
+            let btn = document.getElementById("mybtn");
+
+            // click이 발생하면 자동으로 event 객체 생성 ....
+            btn.onclick = function(e){  // e 변수를 통해서 Event 객체를 전달 받는다.
+                console.log(e.type);            // event 종류 파악
+                console.log(e.target);          // event가 발생한 요소(<span>눌러봐</span>)
+                console.log(e.currentTarget);   // event(리스너)를 가지는 요소(<button id="mybtn"><span>눌러봐</span></button>)
+                console.log(e.x);
+                console.log(e.y);   
+            }
+
+            // event의 type 파악이 가능하기 때문에 전체 이벤트를 handler로 묶어서 관리할 수도 있다.
+            // handler를 사용할 때의 장점: 이벤트를 전체를 한 곳에서 관리할 수 있다.
+            let btn2 = document.getElementById("mybtn2");
+            let handler = function(event){
+                switch(event.type){
+                    case "click": alert("클릭!");
+                        break;
+                    case "mouseover": event.target.style.backgroundColor = "red";
+                        break;
+                    case "mouseout": event.target.style.backgroundColor = "";
+                        break;
+                }
+            }
+
+            btn2.onclick = handler;
+            btn2.onmouseover = handler;
+            btn2.onmouseout = handler;
+        }
+    </script>
+</head>
+<body>
+    <button id="mybtn"><span>눌러봐</span></button>
+    <button id="mybtn2">눌러봐2</button>
+</body>
+</html>

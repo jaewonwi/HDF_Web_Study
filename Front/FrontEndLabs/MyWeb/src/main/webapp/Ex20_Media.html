@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- 
+	모바일 반응형 웹 사이트 ... 
+	화면크기(device)에 맞게 웹 페이지 크기를 조절
+	
+	viewport : 장치(device)의 화면 영역 (스마트폰, 태블릿, 데스크탑 ...)
+	width=device-width : 웹 페이지의 크기를 기기(장치) 화면 너비에 동일하게 맞추어라
+	initial-scale=1.0 : 확대, 축소 비율 > 1.0 = 100%
+	
+	 -->
+	<title>Insert title here</title>
+	
+	
+	<style>
+	.box {
+		width: 500px;
+		padding: 20px;
+		background-color: lightblue;
+		margin: 10px auto;
+		text-align: center;
+		font-size: 24px;
+	}
+	
+	/* 화면 너비가 600px 이하일 때 적용 */
+	@media (max-width : 600px) {
+		.box {
+			width: 100%; /* 화면 꽉 채움 */
+			background-color: lightcoral; /* 색상 변경 */
+			font-size: 18px; /* 글자 크기 축소 */
+		}
+	}
+	</style>
+</head>
+<body>
+
+	<div class="box">
+		Hello
+	</div>
+
+</body>
+</html>

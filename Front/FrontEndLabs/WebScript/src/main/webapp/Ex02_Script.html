@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		/*
+			javascript의 수많은 객체와 함수는 웹 브라우저에 내장되어있다.
+			
+			1. 많이 사용하는 객체는 'new'가 이미 적용되어있다. (이미 얘네가 만들어놓음)
+			2. new Date()
+		*/
+		window.document.write("하이용<br>");	// new window 하지 않는 이유? 많이 사용하는 것은 얘네가 static 느낌으로 만들어놓음
+		
+		// window 는 생략 가능
+		document.write("window 객체 생략 가능!<br>");
+		
+		console.log("디버깅, 결과 미리보기, 오류 메세지 확인");
+		console.log(10+10);
+		
+		// 변수 타입
+		// var, let, const
+		// js 면접에서 FE 필수질문: 호이스팅 (var 관련 개념)
+		
+		// 1. var
+		// var는 잘 사용하지 않는다.
+		var num;		// 타입이 정해져 있지 않다. 값을 넣으면 그 때 타입이 설정된다.
+		console.log(num);	// undefined : 타입이 정해져있지 않음 (예외가 아니라 정상적인 메세지임)
+		
+		num = 10;
+		console.log(num);
+		console.log(typeof(num));	// number		
+		
+		// 2. let
+		let str = "world";
+		console.log(str);
+		console.log(typeof(str));	// string
+		
+		// POINT !! 
+		// js는 순서대로 실행
+		// let element = document.forms[0].elements[0];
+		// console.log(element);		// Uncaught TypeError: Cannot read properties of undefined (reading 'elements') -> js는 순서대로 실행되기 때문 
+		// 								// -> 그래서 script를 body 뒤에 놓거나 onload 뭐 이런걸 쓴다고 함
+		// console.log(element.value);
+		
+		function data(){	// 함수는 호출에 의해서만 실행되기 때문에 먼저 정의되어도 에러 터지지 않는다.
+			let element = document.forms[0].elements[0];
+			alert(element);
+		}
+	</script>
+
+</head>
+<body>
+
+	<form action="#" method="get" name="myform">
+		<input type="text" name="userid" value="hong111"><br>
+		<input type="password" name="pwd" value="1004"><br>
+		<input type="submit" value="send">
+	</form>
+	
+	<input type="button" value="함수호출" onclick="data()">
+</body>
+
+<script>
+	// 실행되는 시점은 body 내의 form 태그가 DOM 객체형태(Tree)로 메모리에 올라간 뒤에 실행된다
+	let element = document.forms[0].elements[0];
+	console.log(element);		// <input type="text" name="userid" value="hong111">
+	console.log(element.value);	// hong111
+
+	let value = window.document.myform.userid.value;
+	console.log("value : " + value);
+	
+	if (value.length < 5){
+		alert("다시입력해주세요");
+		element.value="";
+	}
+</script>
+</html>

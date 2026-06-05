@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Document</title>
+
+    <script>
+
+        function print(){
+            // DOM Script 접근방식
+            let ele = document.getElementById("demo");
+            console.log(ele);
+            ele.innerHTML = "<b>아 졸립다 금요일</b>";      // 박스형태의 태그는 내부에 있는 값을 value라고 본다. innerHTML, innerText로 가져올 수 있음
+            
+            // box : p, div 태그는 속성으로 value를 갖지 않는다 -> 태그 내부에 있는 값을 가져온다. -> innerHTML, innerText
+        }
+
+        // 결론적으로 우리는 DOM Script에 집중할 것임 ... document.getElementById("demo"); 이런것 ... 
+        // https://www.w3schools.com/js/js_htmldom_methods.asp
+
+        /*
+        Method	                                 Description
+        document.getElementById(id)	           : Find an element by element id
+        document.getElementsByTagName(name)	   : Find elements by tag name
+        document.getElementsByClassName(name)  : Find elements by class name
+        document.querySelector(selector)       : Find the first element that matches a CSS selector
+        document.querySelectorAll(selector)	   : Find all elements that match a CSS selector
+
+        */
+
+
+    </script>
+
+
+</head>
+<body>
+    <button onclick="print()">클릭!</button>
+    <p id="demo">
+        demo라는 id는 p 태그를 식별하는 값
+    </p>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            * 유효성 검증
+            어디서 할까? ... front? back? 기준에 따라? 
+            -> 가능한 모든 검증은 frontend에서 끝낸다. 
+            -> DB 관련 유효성 검증은 back에서 (ex. ID 중복검사) 비동기
+
+            >> 서버의 요청은 최소로 줄이자 ! -> 성능
+            >> 요청 전체 페이지의 로딩이 아니라 부분페이지 로딩 (비동기 : ajax)
+            
+            MVC
+            테이블 컬럼명 = class member field = input 태그 name="" 동일하다면 자동화 가능
+            empno           private int empno       <input name="empno">
+        */
+        
+        function send(){
+       	 	const useruid = document.loginform.txtuserid;
+            console.log(useruid);
+            console.log(useruid.value);
+
+            // id 있으면 편하다.
+            const pwd = document.getElementById("txtpwd");
+            console.log(pwd);
+            console.log(pwd.value);
+            
+            // id 없을 경우 selector 사용해서 접근
+            // document.querySelector(선택자)
+
+            // 일반적으로 정규 표현식 (표준)
+            if (useruid.value == "" || !(useruid.value.length >= 3 && useruid.value.length <= 10)){
+                alert("다시 입력해주세요.");
+                document.loginform.txtuserid.focus();
+                useruid.select();   // 커서가 가고 블럭
+            }else{
+                alert("검증 완료");
+                // 서버로 전송
+                document.loginform.action = "Ex08_ok.jsp";
+                document.loginform.submit();    // input type submit
+            }
+			
+            /*
+            권장 : 유효성 검사는 정규표현식으로 구현하자 !
+            let reg = /^[a-zA-Z0-9]{3,10}$/;
+            if(!reg.test(useruid.value)){
+                alert("아이디를 다시 입력하세요");
+                useruid.focus();
+                useruid.select();
+
+            }else{
+                alert("검증 완료");
+                // 서버 전송
+                document.loginform.action = "Ex08_ok.jsp";
+                document.loginform.submit();
+            }
+            */
+        }
+
+    </script>
+
+</head>
+<body>
+    <form action="" method="get" name="loginform">
+        ID : <input type="text" name="txtuserid">
+        PWD: <input type="text" name="txtpwd" id="txtpwd">
+        <input type="button" value="서버 전송" onclick="send()">
+    </form>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>    
+    /*
+        Here is a list of some common HTML events:
+
+        Event	    Description
+        ----------------------------------------------------------------
+        onchange	An HTML element has been changed (select 태그)
+        onclick	The user clicks an HTML element (button)
+        onmouseover	The user moves the mouse over an HTML element
+        onmouseout	The user moves the mouse away from an HTML element
+        onkeydown	The user pushes a keyboard key (키보드 입력)
+        onload	    The browser has finished loading the page (*** 반드시 기억하세요 ***)
+
+    */
+
+    function bodyLoad(){
+        console.log("loading ...");
+        const data = document.myform.money.value;
+        console.log(isNaN(data));   // false
+    }
+
+    function focusFunc(){   // onfocus : input 태그에 커서가 들어오면 실행할 함수
+        document.getElementById("myinput").style.background="gold";
+    }
+
+    function blurFunc(){    // onblur : input 태그에서 커서가 떠나면 실행할 함수
+        document.getElementById("myinput").style.background="white";
+    }
+
+    function selectTag(){
+        const value = document.myform.sel.value;
+        alert(value);
+    }
+    
+    // 1. javascript 특징 -> this(요소자신), event 객체(target, currentTarget), Array 를 잘 사용해야 함
+    // + javascript의 파라미터에는 type을 쓰지 않는다. var, const, let 이런것도 필요없고 변수명만 쓰면 된다.
+    // obj에 this가 온다 ? -> input element 전체를 parameter로 받는다. (<input type="text" onmouseover="changeColor(this)" onmouseout="changeColor2(this)">)
+    function changeColor(obj){
+        console.log(obj);
+        obj.style.backgroundColor = "gold";
+    }
+    
+    function changeColor2(obj){
+        console.log(obj);
+        obj.style.backgroundColor = "white";
+    }
+</script>
+
+
+</head>
+<body onload="bodyLoad()">
+    <form action="#" name="myform">
+        <input type="text" id="myinput" name="myinput" onfocus="focusFunc()"  onblur="blurFunc()">
+        <br>
+        <select name="sel" onchange="selectTag()">
+            <option value="A">AA</option>
+            <option value="B">BB</option>
+            <option value="C">CC</option>
+            <option value="D">DD</option>
+        </select>
+        <br>
+        <input type="text" onmouseover="changeColor(this)" onmouseout="changeColor2(this)">
+        
+        <input type="text"><br>
+        <input type="text" value="1000" name="money">
+    </form>
+</body>
+</html>

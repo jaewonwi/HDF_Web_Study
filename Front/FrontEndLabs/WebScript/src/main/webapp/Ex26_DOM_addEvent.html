@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="mybtn">클릭<br></button>
+
+</body>
+<script>
+    let x = document.getElementById("mybtn");
+    
+    x.addEventListener("mouseover", myFunc);
+    x.addEventListener("mouseout", myFunc2);
+    x.addEventListener("click", myFunc3);
+
+    function myFunc(){
+        document.getElementById("mybtn").innerHTML += "MOUSE OVER<br>";
+    }
+
+    function myFunc2(){
+        document.getElementById("mybtn").innerHTML += "MOUSE OUT<br>";
+    }
+
+    function myFunc3(){
+        document.getElementById("mybtn").innerHTML += "MOUSE CLICK<br>";
+    }
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        /*
+            2.x.x       > bind(), unbind()
+            3.x.x       > on(), off()
+            2026 4.x.x  > 
+
+
+            *** POINT 
+            jquery에서 함수의 parameter로 JSON 객체 사용
+
+        */
+
+
+
+        $(function(){
+            $('p').on(
+                {
+                    mouseenter:function(){ $(this).css('background-color','red') },    // property가 이벤트 이름
+                    mouseleave:function(){ $(this).css('background-color','green') },
+                    click:function(){ $(this).css('background-color','blue') }                
+                }
+            )
+
+            $('button').click(function(){
+                $('p').off('click');
+            });
+
+            // js의 on() : addEventListener(), off() : removeEventListener() 라고 생각하면 됨...
+        });
+
+        
+
+    </script>
+</head>
+<body>
+    <p>JQuery도 다중 이벤트 처리 가능함</p>
+    <hr>
+    <button>이벤트 제거</button>
+</body>
+</html>

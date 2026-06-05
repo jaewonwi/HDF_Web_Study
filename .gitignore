@@ -20,6 +20,10 @@ Servers/
 .DS_Store
 Thumbs.db
 
-# Labs - metadata, servers
-Back/BackEndLabs/.metadata/
-Back/BackEndLabs/Servers/
+# Back study workspace
+Back/**/.metadata/
+Back/**/Servers/
+
+# Front study workspace
+Front/**/.metadata/
+Front/**/Servers/

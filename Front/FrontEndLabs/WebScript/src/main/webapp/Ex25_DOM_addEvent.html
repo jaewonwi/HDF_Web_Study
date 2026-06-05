@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            https://www.w3schools.com/jsref/met_element_addeventlistener.asp
+
+            element.addEventListener(event, function, useCapture)
+            - event: 이벤트 이름 (문법상 on 없음)
+            - function: 이벤트가 발생했을 때 실행할 callback 함수 (문법상 괄호 X, 실제론 이 함수는 거의 재사용하지 않는 경우가 많아서 익명함수 형태로 구현)
+            - useCaptuer: 이벤트 전파를 제어 (Optional, default = false)
+                false - The handler is executed in the bubbling phase.
+                true - The handler is executed in the capturing phase.
+
+            * 장점: 하나의 요소에 여러 이벤트를 걸 수 있고, 필요없다면 이벤트를 제거할 수 있음
+              addEventListener    : 이벤트 추가
+              removeEventListener : 이벤트 제거
+
+            
+        */
+    </script>
+</head>
+<body>
+    <button id="myBtn">Try</button>
+    <p id="demo"></p>
+</body>
+<script>
+    document.getElementById("myBtn").addEventListener("click", displayDate);    // callback 함수에 괄호 X 
+
+    function displayDate(){
+        document.getElementById("demo").innerHTML = new Date();
+    }
+</script>
+</html>

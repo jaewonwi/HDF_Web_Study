@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <p id="demo2"></p>
+    
+</body>
+<script>
+    // 참고자료: https://www.w3schools.com/js/js_arrow_function.asp
+    
+    // 화살표 함수 (줄임...)
+
+    // 일반함수
+    // function foo(){}
+
+    // 익명함수
+    let foo = function(){   // javascript : 함수(일급객체) - 함수를 변수에 할당
+        console.log("foo...");
+    }
+    foo();  // 실행방법
+
+    // 2015 ES6 줄임표현 (Arrow Function)
+    let bar = () => console.log("bar...");
+    bar();  // 실행방법
+
+
+    // 매개변수 1개 return
+    let foo2 = x => x;      // let foo2 = function(x) { return x; }
+    const data = foo2(100);
+
+    let hello;
+    hello = val => "hello" + val;   // let hello = function(val) { return "hello"+val; }
+    const v = hello(" world");
+    console.log(v); // hello world
+
+    // 매개변수가 2개 이상인 경우부터
+    // function call(a,b) or function call(a,b,c,d)
+    // let foo3 = (a,b) => { return a+b; };
+    let foo3 = (a,b) => a+b;
+    const v2 = foo3(10, 20);
+    console.log(v2);
+
+    // 만약 함수 안에 여러개의 논리(if, switch ...)가 필요하다면, 중괄호 필요
+    let foo4 = (a,b) => {
+        let c = 100;
+        return a+b+c;
+    }
+
+    // *** 응용 ***
+    // 함수가 return하는 자원이 json 객체라면
+    let foo5 = () => ({a:1, b:2, c:3});     // {{}} ...? 이런건 없음
+    const obj = foo5();
+
+    // 즉시 실행 함수()
+    (
+        function(){
+            console.log("즉시 실행 함수");
+        }
+    )();
+
+    (
+        ()=>console.log("즉시 실행 함수")   // ;를 붙이면 오류 발생... 왜?
+    )();
+
+
+    /*
+        https://www.w3schools.com/JSREF/jsref_foreach.asp
+        배열에 관련된 다양한 함수
+        forEach(1), isArray, map(2), filter
+    */
+
+
+    /*
+	  	초급자 (암기)
+	  	1. for(let i = 0 ; i < 10 ; i++){}
+	    2. for(let index in Array) { Array[index] }
+	    3. for(let value of Array) { value}
+	    
+	    객체(JSON)
+	    JSON {a:1, b:2 , c:3}
+	    1. for(let key in Object) {Object[key]}   ex) 객체["a"] return 1
+	    2. const obj = {a:1} >> (객체.속성명) obj.a return 1
+	    
+	    추가적으로
+	    1.Array.isArray()
+	    2.Array.forEach(function(value,index,array){})  배열.forEach
+	    3.Array.map() > 새로운 배열 조작()형태의 배열을 리턴
+        4.Array.filter(function(currentValue, index, arr), thisValue)  return 배열 
+    */
+
+    function myFunc(){
+        const data = ["A","B","C","D"];
+        let x = document.getElementById("demo2");
+        x.innerHTML = Array.isArray(data);
+    };
+
+    //호출
+    myFunc();
+
+    let txt="";
+    const numbers = [45,5,8,46,25];
+
+    // *** POINT ***
+    // Array.forEach(function(value, index, array){ ... })
+    function myFunc2(value, index, array){
+        txt = "(" + value + ")" + "[" + index + "]" + "[" + array + "]";
+        console.log(txt);
+    }
+    
+    numbers.forEach(myFunc2);   // return이 없음 -> 소비하면 끝
+    /*
+        (45)[0][45,5,8,46,25]
+        (5)[1][45,5,8,46,25]
+        (8)[2][45,5,8,46,25]
+        (46)[3][45,5,8,46,25]
+        (25)[4][45,5,8,46,25]
+    */
+
+    // map()
+    const numbers2 = [65,88,1,23];
+    const newArray = numbers2.map(function(value, index, array){    // 가공된 값을 배열로 return
+        return value * 10 + index;  
+    });
+    console.log(newArray);  // (4) [650, 881, 12, 233]
+
+    // 응용하기 ... 
+    let evens = [2,4,6,8];
+    /*
+    let odds = evens.map(function(value){
+        return value + 1;
+    });
+    */
+    // 화살표 함수 (callback 함수 구현: 화살표 함수 사용)
+    let odds = evens.map(value => value + 1);
+    console.log(odds);
+
+    /*
+    let nums = evens.map(function(value, index){
+        return value + index;
+    });
+    */
+    // 화살표 함수
+    let nums = evens.map((value, index) => (value + index));
+
+    // 만약 map을 사용하지 않는다면...
+    let noMapArr = [];
+    evens.forEach(value => {
+        if (value % 2 === 0){
+            noMapArr.push(value);
+        }
+    });
+    console.log(noMapArr);
+
+    // ** 조작된 새로운 배열이 필요하다면 -> map()
+
+    const ages = [32, 33, 16, 40];
+    const result = ages.filter(checkAdult);
+
+    function checkAdult(age) {
+        return age >= 18;   
+    }
+    console.log(result);
+
+
+    
+</script>
+</html>

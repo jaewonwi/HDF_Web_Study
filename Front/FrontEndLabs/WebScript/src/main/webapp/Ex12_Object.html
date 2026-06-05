@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            javascript : 객체지향언어 (재사용성 ... 클래스, 상속, 다형성)
+            
+            javascript의 다양한 객체 (내장객체) : 웹 브라우저가 내장하고 있다.
+            1. new를 통해 사용할 수 있다.
+            2. 사용하기 편하게 ... new를 하지 않아도 사용할 수 있도록 ... js가 객체를 제공한다. (ex. Math)
+        */
+        let today = new Date();  // in java ... Date d = new Date()
+        console.log(today);
+        console.log(today.getFullYear());
+        console.log(today.getMonth());
+        console.log(today.getDate());
+        console.log(today.getHours());
+        console.log(today.getMinutes());
+        console.log(today.getSeconds());
+
+        // java의 static 함수(많이 사용하니까 편하게 쓰라고 사용하는...) > 객체 생성 필요 X
+        // javascript에도 그런 객체가 있음
+        console.log(Math.random());     // 0 <= val < 1
+        console.log(parseInt(Math.random()*45) + 1);
+
+        console.log(Math.round(3.5678));    // 4
+        console.log(Math.max(3,5,8,191,1111));     // 1111
+
+        // *** POINT *** 
+        // 문자열 다루기
+        let str = "ABCDEF";
+
+        // document.write();
+        with(document){
+            write(str.substring(1,2)+"<br>");  // 부분 문자열 추출 (시작인덱스, 마지막인덱스(포함X))
+            write(str.substring(1)+"<br>");    // 부분 문자열 추출 (시작인덱스) => 시작 인덱스부터 마지막 인덱스까지
+
+            // * POINT *
+            // 개선된 for문
+            /*
+                Java:
+                    for (String str : arr){}
+                    -> 배열의 값을 갖는다.
+
+                Javascript:
+                    for (let index in arr){}
+                    -> 값이 아닌 배열의 index를 갖는다. 
+
+                    for (let value of arr){}
+                    -> 배열의 값을 갖는다.
+            */
+
+            let strarr = "A B C D";
+            let arr = strarr.split(" ");    // [A][B][C][D]
+            write(arr);  // A,B,C,D ... javascript의 Array는 Object를 상속 -> Object의 toString() Array에서 재정의
+            
+            write("<br>");
+            for (let index in arr){
+                write(index + "-" + arr[index] + "<br>");
+            }
+
+            write("<br>");
+            for (let value of arr){
+                write(value + "<br>");
+            }
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
