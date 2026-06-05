@@ -1,0 +1,25 @@
+# Eclipse
+.metadata/
+Servers/
+
+# Eclipse Project
+**/.settings/
+**/.classpath
+**/.project
+
+# IntelliJ
+**/.idea/
+**/*.iml
+
+# Build
+**/build/
+**/target/
+**/out/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Labs - metadata, servers
+Back/BackEndLabs/.metadata/
+Back/BackEndLabs/Servers/

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
+  <display-name>WEBJSP</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 
+   전역자원을 생성가능 
+   <context-param> 누가 read
+   
+   Application 객체 read 할 수 있다 
+   -->
+   <context-param>
+   	 	<description>이 설명은 개발자의 마음</description>
+   	 	<param-name>email</param-name>
+   	 	<param-value>kosa@kosa.or.kr</param-value>
+   </context-param>
+   <context-param>
+   		<description>기본 파일 업로드 경로</description>
+   		<param-name>filePath</param-name>
+   		<param-value>C:\\Webjsp\\upload</param-value>
+   </context-param>
+   
+   <!-- 
+   	예외 처리에 대한 page 설정
+   	1. 상태코드 : 500 ,  404  , 403
+   	2. 상세하게 예외 별도 (NullPoint ..> 페이지 , IndexOutOf ..> 페이지
+    -->
+    <error-page>
+    	<error-code>500</error-code>
+    	<location>/error/Error500.jsp</location>
+    </error-page>
+     <error-page>
+    	<error-code>404</error-code>
+    	<location>/error/Error404.jsp</location>
+    </error-page>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</web-app>
